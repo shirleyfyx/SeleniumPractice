@@ -1,5 +1,6 @@
 const {Builder, By, Key} = require ("selenium-webdriver");
 const assert = require("assert");
+var should = require("chai").should();
 
 async function example(){
 
@@ -19,7 +20,11 @@ let todoText = await driver.findElement(By.xpath("//li[last()]")).getText().then
     return value
 });
 
+// assert using node assertion
 assert.strictEqual(todoText,"Learn Selenium");
+
+//assert using chai should
+todoText.should.equal("Learn Selenium");
 
 // close the browser
 await driver.quit();
